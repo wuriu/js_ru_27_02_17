@@ -32,8 +32,9 @@ class CommentList extends Component {
 
     getContainerRef = (ref) => {
         this.container = ref
-        this.size = ref.getBoundingClientRect()
-        console.log('---', ref)
+        if (ref) {
+            this.size = ref.getBoundingClientRect()
+        }
     }
 
     getBody() {
