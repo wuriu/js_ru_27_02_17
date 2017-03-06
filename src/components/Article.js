@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react'
 import CommentList from './CommentList'
-import toggleOpen from '../decorators/toggleOpen'
 
 function Article(props) {
     const {article, isOpen, toggleOpen} = props
@@ -26,4 +25,4 @@ Article.propTypes = {
     }).isRequired
 }
 
-export default toggleOpen(Article)
+export default Article
