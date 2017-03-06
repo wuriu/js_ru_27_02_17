@@ -15,14 +15,25 @@ class CommentList extends Component {
         console.log('---', 'comment list mounted')
     }
 
+    componentDidUpdate() {
+        this.size = this.container.getBoundingClientRect()
+    }
+
     render() {
         const {isOpen, toggleOpen} = this.props
+        console.log('---', this.size)
         return (
-            <div>
+            <div ref={this.getContainerRef}>
                 <a href="#" onClick={toggleOpen}>{isOpen ? 'hide' : 'show'} comments</a>
                 {this.getBody()}
             </div>
         )
+    }
+
+    getContainerRef = (ref) => {
+        this.container = ref
+        this.size = ref.getBoundingClientRect()
+        console.log('---', ref)
     }
 
     getBody() {
