@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react'
-import CommentList from './CommentListOld'
+import CommentList from './CommentList'
+import toggleOpen from '../decorators/toggleOpen'
 
 class Article extends Component {
     static propTypes = {
@@ -10,16 +11,8 @@ class Article extends Component {
         }).isRequired
     }
 
-    constructor(props) {
-        super()
-        this.state = {
-            isOpen: false //props.defaultOpen
-        }
-    }
-
     render() {
-        const {article} = this.props
-        const {isOpen} = this.state
+        const {article, isOpen, toggleOpen} = this.props
         const body = isOpen
             ? <section>
                 {article.text}
@@ -28,17 +21,11 @@ class Article extends Component {
             : null
         return (
             <div>
-                <h3 onClick={this.handleClick}>{article.title}</h3>
+                <h3 onClick={toggleOpen}>{article.title}</h3>
                 {body}
             </div>
         )
     }
-
-    handleClick = (ev) => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
-    }
 }
 
-export default Article
+export default toggleOpen(Article)
