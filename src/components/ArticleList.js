@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import Article from './Article'
 
-export default (props) => {
+export default function ArticleList(props) {
     const {articles} = props
 
     const articleComponents = articles.map(article => <li key={article.id}><Article article={article}/></li>)
@@ -11,4 +11,8 @@ export default (props) => {
             {articleComponents}
         </ul>
     )
+}
+
+ArticleList.propTypes = {
+    articles: PropTypes.array.isRequired
 }
