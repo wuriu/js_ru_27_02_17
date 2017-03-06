@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
+import React, {createClass, PropTypes} from 'react'
 import Comment from './Comment'
+import toggleOpen from '../mixins/toggleOpen'
 
-class CommentList extends Component {
-    static defaultProps = {
-        comments: []
-    }
-
-    state = {
-        isOpen: false
-    }
+export default createClass({
+    mixins: [toggleOpen],
+    getDefaultProps() {
+        return {
+            comments: [],
+            defaultOpen: false
+        }
+    },
 
     render() {
         const {isOpen} = this.state
@@ -18,7 +19,7 @@ class CommentList extends Component {
                 {this.getBody()}
             </div>
         )
-    }
+    },
 
     getBody() {
         if (!this.state.isOpen) return null
@@ -41,13 +42,4 @@ class CommentList extends Component {
             </div>
         )
     }
-
-    toggleOpen = ev => {
-        ev.preventDefault()
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
-    }
-}
-
-export default CommentList
+})

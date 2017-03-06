@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import CommentList from './CommentList'
+import CommentList from './CommentListOld'
 
 class Article extends Component {
     static propTypes = {
@@ -10,10 +10,10 @@ class Article extends Component {
         }).isRequired
     }
 
-    constructor() {
+    constructor(props) {
         super()
         this.state = {
-            isOpen: false
+            isOpen: false //props.defaultOpen
         }
     }
 
