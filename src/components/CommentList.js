@@ -17,7 +17,7 @@ class CommentList extends Component {
         const btnText = isOpen
             ? "Скрыть комментарии"
             : "Показать комментарии"
-        const commentComponents = comments.map(comment => <Comment comment={comment}/>)
+        const commentComponents = comments.map(comment => <Comment comment={comment} key={comment.id} />)
         const commentList = isOpen
             ? <ul className="comment-list__comments">{commentComponents}</ul>
             : null
