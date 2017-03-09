@@ -9,7 +9,7 @@ export default (CustomComponent) => class AccordionDecorator extends React.Compo
         if (ev && ev.preventDefault) ev.preventDefault()
 
         this.setState({
-            openItemId
+            openItemId: this.isItemOpened(openItemId) ? null : openItemId
         })
     }
 

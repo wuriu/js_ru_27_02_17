@@ -18,7 +18,7 @@ class CommentList extends Component {
 
     render() {
         const {isOpen, toggleOpen} = this.props
-        console.log('---', this.size)
+//        console.log('---', this.size)
         return (
             <div ref={this.getContainerRef}>
                 <a href="#" onClick={toggleOpen}>{isOpen ? 'hide' : 'show'} comments</a>
