@@ -1,14 +1,16 @@
 import React, {Component, PropTypes} from 'react'
 import {findDOMNode} from 'react-dom'
-import CommentList from './CommentList'
+import CommentList from '../CommentList'
+import CSSTransition from 'react-addons-css-transition-group'
+import './style.css'
 
 class Article extends Component {
-/*
-    shouldComponentUpdate(nextProps, nextState) {
-        return nextProps.isOpen !== this.props.isOpen
-    }
+    /*
+     shouldComponentUpdate(nextProps, nextState) {
+     return nextProps.isOpen !== this.props.isOpen
+     }
 
-*/
+     */
     render() {
         const {article, isOpen, toggleOpen} = this.props
         const body = isOpen
@@ -20,7 +22,13 @@ class Article extends Component {
         return (
             <div>
                 <h3 onClick={toggleOpen}>{article.title}</h3>
-                {body}
+                <CSSTransition
+                    transitionName="article"
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={300}
+                >
+                    {body}
+                </CSSTransition>
             </div>
         )
     }
