@@ -12,14 +12,6 @@ class CommentList extends Component {
         comments: []
     }
 
-    componentWillMount() {
-        console.log('---', 'mounting comment list')
-    }
-
-    componentDidMount() {
-        console.log('---', 'comment list mounted')
-    }
-
     componentDidUpdate() {
         this.size = this.container.getBoundingClientRect()
     }
