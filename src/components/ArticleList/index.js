@@ -1,4 +1,5 @@
 import React, {PropTypes, Component} from 'react'
+import {connect} from 'react-redux'
 import Article from '../Article/index'
 import CSSTransition from 'react-addons-css-transition-group'
 import accrdion from '../../decorators/accordion'
@@ -29,7 +30,11 @@ class ArticleList extends Component {
     }
 }
 
-export default accrdion(ArticleList)
+export default connect((state) => {
+    return {
+        articles: state.articles
+    }
+})(accrdion(ArticleList))
 
 ArticleList.propTypes = {
     articles: PropTypes.array.isRequired,
