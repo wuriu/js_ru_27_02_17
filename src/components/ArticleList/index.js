@@ -30,11 +30,14 @@ class ArticleList extends Component {
     }
 }
 
-export default connect((state) => {
+const mapStateToProps = state => {
+    console.log('---', 'connect, state = ', state)
     return {
         articles: state.articles
     }
-})(accrdion(ArticleList))
+}
+
+export default connect(mapStateToProps)(accrdion(ArticleList))
 
 ArticleList.propTypes = {
     articles: PropTypes.array.isRequired,
