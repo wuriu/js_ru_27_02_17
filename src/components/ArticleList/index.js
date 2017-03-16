@@ -31,9 +31,23 @@ class ArticleList extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log('---', 'connect, state = ', state)
+    const {articles, selectedArticles, dateRange} = state;
+    let filteredArticles = articles;
+    if (selectedArticles && selectedArticles.length) {
+        filteredArticles = articles.filter(article => selectedArticles.includes(article.id))
+    }
+    if (dateRange.from && dateRange.to) {
+        const fromDate = Date.parse(dateRange.from);
+        const toDate = Date.parse(dateRange.to);
+        filteredArticles = filteredArticles.filter(article => {
+            const articleDate = Date.parse(article.date);
+
+            return articleDate >= fromDate && articleDate <= toDate
+        })
+    }
+
     return {
-        articles: state.articles
+        articles: filteredArticles
     }
 }
 
